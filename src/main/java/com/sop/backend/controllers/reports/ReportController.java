@@ -28,4 +28,22 @@ public class ReportController {
                 .contentType(MediaType.APPLICATION_PDF)
                 .body(data);
     }
+    @GetMapping("/commitments/pdf")
+    public ResponseEntity<byte[]> getCommitmentsReport() throws JRException {
+        byte[] data = reportService.generateCommitmentsReport();
+
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=commitments_report.pdf")
+                .contentType(MediaType.APPLICATION_PDF)
+                .body(data);
+    }
+    @GetMapping("/payments/pdf")
+    public ResponseEntity<byte[]> getPaymentsReport() throws JRException {
+        byte[] data = reportService.generatePaymentsReport();
+
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=payments_report.pdf")
+                .contentType(MediaType.APPLICATION_PDF)
+                .body(data);
+    }
 }
