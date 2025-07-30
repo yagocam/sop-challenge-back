@@ -2,7 +2,7 @@ FROM gradle:8.4.0-jdk17 AS builder
 
 WORKDIR /app
 
-COPY build.gradle.kts settings.gradle.kts gradle.properties ./
+COPY build.gradle settings.gradle ./
 COPY gradle gradle
 RUN gradle --no-daemon dependencies
 
