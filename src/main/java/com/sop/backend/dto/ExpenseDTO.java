@@ -27,5 +27,8 @@ public class ExpenseDTO {
     private ExpenseStatus status;
     @Builder.Default
     private List<ListCommitmentDTO> commitments = new ArrayList<>();
+    public String getStatusString() {
+        return this.status != null ? this.status.name() : "";
+    }
 
 }

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports
+              http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="ExpensesReport" pageWidth="595" pageHeight="842" columnWidth="555"
+              leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+
+    <field name="protocol_number" class="java.lang.String"/>
+    <field name="description" class="java.lang.String"/>
+    <field name="amount" class="java.math.BigDecimal"/>
+    <field name="status" class="java.lang.String"/>
+
+    <title>
+        <band height="50">
+            <staticText>
+                <reportElement x="0" y="10" width="555" height="30"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="18" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Relatório de Despesas]]></text>
+            </staticText>
+        </band>
+    </title>
+
+    <columnHeader>
+        <band height="20">
+            <staticText>
+                <reportElement x="0" y="0" width="150" height="20"/>
+                <text><![CDATA[Protocolo]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="150" y="0" width="255" height="20"/>
+                <text><![CDATA[Descrição]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="405" y="0" width="75" height="20"/>
+                <text><![CDATA[Valor]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="480" y="0" width="75" height="20"/>
+                <text><![CDATA[Status]]></text>
+            </staticText>
+        </band>
+    </columnHeader>
+
+    <detail>
+        <band height="20">
+            <textField>
+                <reportElement x="0" y="0" width="150" height="20"/>
+                <textFieldExpression><![CDATA[$F{protocol_number}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="150" y="0" width="255" height="20"/>
+                <textFieldExpression><![CDATA[$F{description}]]></textFieldExpression>
+            </textField>
+            <textField pattern="#,##0.00">
+                <reportElement x="405" y="0" width="75" height="20"/>
+                <textFieldExpression><![CDATA[$F{amount}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="480" y="0" width="75" height="20"/>
+                <textFieldExpression><![CDATA[$F{status}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+
+</jasperReport>
