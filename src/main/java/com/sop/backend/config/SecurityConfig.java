@@ -59,6 +59,7 @@ public class SecurityConfig {
                         .requestMatchers("/auth/generateToken",
                                 "/auth/register",
                                 "/api/docs/**",
+                                "/actuator/**",
                                 "/error",
                                 "/api/docs/**",
                                 "/swagger-ui/**",      // libera Swagger UI
