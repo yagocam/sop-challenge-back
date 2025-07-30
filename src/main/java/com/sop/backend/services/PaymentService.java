@@ -4,6 +4,7 @@ import com.sop.backend.dto.PaymentDTO;
 import com.sop.backend.mapper.CommitmentMapper;
 import com.sop.backend.mapper.PaymentMapper;
 import com.sop.backend.models.Commitment;
+import com.sop.backend.models.Expense;
 import com.sop.backend.models.Payment;
 import com.sop.backend.repositories.CommitmentRepository;
 import com.sop.backend.repositories.PaymentRepository;
@@ -49,7 +50,8 @@ public class PaymentService {
         paymentDTO.setCreated_at(LocalDateTime.now());
         Payment saved = repository.save(PaymentMapper.INSTANCE.toEntity(paymentDTO));
         commitment.getPayments().add(saved);
-
+       Expense expense = commitment.getExpense();
+       expense.setStatus(expense.getStatus());
         return PaymentMapper.INSTANCE.toDto(saved);
     }
 

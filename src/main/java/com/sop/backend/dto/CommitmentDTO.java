@@ -1,8 +1,6 @@
 package com.sop.backend.dto;
 
 import com.sop.backend.dto.list.ListPaymentDTO;
-import com.sop.backend.models.Expense;
-import com.sop.backend.models.Payment;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 

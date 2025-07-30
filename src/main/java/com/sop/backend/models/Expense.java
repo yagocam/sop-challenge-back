@@ -66,6 +66,7 @@ public class Expense {
         if (totalCommitment.compareTo(this.amount) == 0 && totalPago.compareTo(BigDecimal.ZERO) == 0)
             return ExpenseStatus.WAITING_PAYMENT;
         if (totalPago.compareTo(this.amount) < 0) return ExpenseStatus.PARTIALLY_PAYED;
-        return ExpenseStatus.PAYED;
+        if (totalPago.compareTo(this.amount) == 0) return ExpenseStatus.PAYED;
+        return ExpenseStatus.WAITING_COMMITMENT;
     }
 }
