@@ -22,7 +22,6 @@ public class JwtService {
     public JwtService(@Value("${jwt.secret}") String secret) {
         this.secret = secret;
     }
-    public static final String SECRET = "9D0EB6B1C2E1FAD0F53A248F6C3B5E4E2F6D8G3H1I0J7K4L1M9N2O3P5Q0R7S9T1U4V2W6X0Y3Z";
     public String generateToken(String userName) {
         Map<String, Object> claims = new HashMap<>();
         return createToken(claims, userName);
