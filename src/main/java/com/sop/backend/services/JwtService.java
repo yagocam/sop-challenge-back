@@ -5,6 +5,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
@@ -16,6 +17,11 @@ import java.util.function.Function;
 
 @Component
 public class JwtService {
+    private final String secret;
+
+    public JwtService(@Value("${jwt.secret}") String secret) {
+        this.secret = secret;
+    }
     public static final String SECRET = "9D0EB6B1C2E1FAD0F53A248F6C3B5E4E2F6D8G3H1I0J7K4L1M9N2O3P5Q0R7S9T1U4V2W6X0Y3Z";
     public String generateToken(String userName) {
         Map<String, Object> claims = new HashMap<>();
@@ -30,7 +36,7 @@ public class JwtService {
                 .signWith(getSignKey(), SignatureAlgorithm.HS256).compact();
     }
     private Key getSignKey() {
-        byte[] keyBytes= Decoders.BASE64.decode(SECRET);
+        byte[] keyBytes = Decoders.BASE64.decode(secret);
         return Keys.hmacShaKeyFor(keyBytes);
     }
     public String extractUsername(String token) {
