@@ -40,8 +40,15 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http, AuthenticationProvider authenticationProvider) throws Exception {
         return http
                 .authorizeHttpRequests((authz) -> authz
-                        .requestMatchers("/auth/generateToken", "/auth/register", "/api/docs/**",
-                                "/error").permitAll()
+                        .requestMatchers("/auth/generateToken",
+                                "/auth/register",
+                                "/api/docs/**",
+                                "/error",
+                                "/api/docs/**",
+                                "/swagger-ui/**",      // libera Swagger UI
+                                "/v3/api-docs/**",     // libera JSON OpenAPI
+                                "/swagger-ui.html"
+                        ).permitAll()
                         .requestMatchers("/api/**").authenticated()
                 )
                 .httpBasic(withDefaults()).csrf((csrf) -> csrf.disable())
