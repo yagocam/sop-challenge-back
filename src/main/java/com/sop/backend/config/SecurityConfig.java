@@ -62,8 +62,8 @@ public class SecurityConfig {
                                 "/actuator/**",
                                 "/error",
                                 "/api/docs/**",
-                                "/swagger-ui/**",      // libera Swagger UI
-                                "/v3/api-docs/**",     // libera JSON OpenAPI
+                                "/swagger-ui/**",
+                                "/v3/api-docs/**",
                                 "/swagger-ui.html"
                         ).permitAll()
                         .requestMatchers("/api/**").authenticated()

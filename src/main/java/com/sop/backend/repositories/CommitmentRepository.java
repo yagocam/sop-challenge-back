@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 public interface CommitmentRepository extends JpaRepository<Commitment, Long> {
-    @Query("SELECT COUNT(c) FROM Commitment c WHERE FUNCTION('date_part', 'year', c.created_at) = :year")
+    @Query("SELECT COUNT(c) FROM Commitment c WHERE FUNCTION('date_part', 'year', c.created_at) = :year AND c.deletedAt IS NULL")
     long countByYear(@Param("year") int year);
 
 }
